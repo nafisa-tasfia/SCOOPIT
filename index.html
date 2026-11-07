@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCOOPIT - Verify the Truth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>SCOOPIT</h1>
+        <p>Uncover. Verify. Trust.</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#checker">Fact Checker</a>
+        <a href="#dashboard">Dashboard</a>
+    </nav>
+
+    <main>
+        <h2>Question Everything. Verify the Facts.</h2>
+        <p>Check AI-generated information before trusting it.</p>
+
+        <section id="checker">
+            <h3>AI Fact Checker</h3>
+
+            <textarea id="claim" placeholder="Paste your AI-generated claim here..."></textarea>
+
+            <button onclick="verifyClaim()">Verify Claim</button>
+
+            <div id="result"></div>
+        </section>
+
+        <section id="dashboard">
+            <h3>Verification Dashboard</h3>
+            <p>Total Checks: <span id="total">0</span></p>
+            <p>Supported: <span id="supported">0</span></p>
+            <p>Contradicted: <span id="false">0</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 SCOOPIT | AI-Assisted Fact Verification Platform</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
