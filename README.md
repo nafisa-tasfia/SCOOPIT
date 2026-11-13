@@ -1,71 +1,151 @@
 # SCOOPIT
 ### Uncover. Verify. Trust.
 
-**A Lightweight (Rule based) Prototype for Fake News Detection and Fact Verification**
+**An Evidence-Based Fact-Checking and Misinformation Analysis Platform**
 
+## 1. Project Overview
 
-## Project Overview
+SCOOPIT is an educational fact-checking and misinformation analysis platform designed to explore claim verification, evidence evaluation, and responsible information assessment.
 
-SCOOPIT is an introductory web based prototype that demonstrates the fundamental concept of identifying misinformation and evaluating the reliability of information.
+The platform provides a structured environment for examining factual claims, organizing supporting sources, reviewing human-assessed verdicts, and investigating selected news topics.
 
-The project provides a simple interface for submitting claims(inputs) and receiving preliminary verification results through predefined text matching rules. It explores the basic workflow of a fact-verification platform while highlighting the importance of critical thinking and responsible information consumption.
+Initially developed as a lightweight, rule-based prototype, SCOOPIT was subsequently expanded into a more comprehensive research-oriented platform through additional features, structured investigations, and a documented verification methodology.
 
-Developed with HTML, CSS, and JavaScript, SCOOPIT serves as an initial implementation that can be extended into a more comprehensive verification platform.
+## 2. Project Background & Internship Context
 
-## Key Features
+SCOOPIT was developed as part of the **YSSE IT Department Virtual Internship Program (17th Batch)** through two successive weekly assignments.
 
- **Claim Input:** Submit statements or claims for preliminary checking.
- **Rule-Based Evaluation:** Match submitted text against a limited set of predefined conditions.
- **Verification Classification:** Categorize results as Supported, Contradicted, or Needs Verification.
- **Verification Dashboard:** Display total checks and counts of supported and contradicted claims.
- **Simple User Interface:** Provide an accessible and straightforward user experience.
+**Week 5 – Initial Prototype**
 
-## Technology Stack
+The project originated from an individual assignment titled *AI Output Verification & AI Fake News Hub*. The initial implementation was a lightweight, rule-based web prototype demonstrating basic claim verification through predefined text-matching conditions.
 
-Application 
+**Week 6 – Feature Expansion and Enhancement**
 
- HTML for Structure and content 
- CSS for Styling and responsive layout 
- JavaScript for Rule-based evaluation and dashboard updates 
+Building upon the initial prototype, the project was further developed into an expanded fact-checking platform. This version introduced a structured claim database, evidence repository, news investigations, an AI vs. Human comparison section, and a documented verification methodology.
 
-## Project Structure
+This progression reflects the development of an initial assignment into a broader research-oriented web platform through continued development and feature enhancement.
 
-```text
-SCOOPIT/
-├── index.html      # Main webpage
-├── style.css       # Visual design and styling
-├── script.js       # Claim evaluation logic
-└── README.md       # Project documentation
-```
+## 3. Project Objectives
 
-## Workflow
+- Explore practical approaches to identifying and analyzing misinformation.
+- Examine factual claims using credible and traceable sources.
+- Organize investigated claims through a structured database.
+- Explore the relationship between AI-generated assessments and human evaluation.
+- Maintain supporting evidence for transparent claim assessment.
+- Encourage critical thinking and responsible digital information consumption.
 
-1. **Input:** The user submits a claim through the input interface.
-2. **Evaluation:** JavaScript checks the submitted text against predefined rules.
-3. **Classification:** The system assigns a preliminary verification status.
-4. **Output:** The result and corresponding message are displayed.
-5. **Dashboard Update:** Verification counters are updated based on the result.
+## 4. Key Features
 
-## Technical Scope and Limitations
+### Dashboard
+Provides an overview of the platform, including claim statistics and verification outcomes.
 
-SCOOPIT is currently an early stage demonstration prototype with a deliberately limited implementation.
+### Claim Verification
+An interactive demonstration of basic claim verification using predefined examples and rule-based logic.
 
-- Uses predefined text-matching conditions rather than machine learning or AI-based analysis.
-- Supports only a limited set of recognized claims.
-- Does not perform real-time web searches or retrieve external evidence.
-- Does not integrate with third-party fact-checking services or APIs.
-- Cannot independently establish the accuracy of unfamiliar claims.
-- Dashboard statistics are maintained temporarily and reset upon page reload.
+### Claim Database
+Organizes investigated claims and their corresponding human-assessed verdicts.
 
-## Future Development
+### AI vs. Human Comparison
+Provides a dedicated section for examining AI-generated assessments alongside human evaluation.
 
-Potential improvements to expand the platform include:
+### Evidence Repository
+Organizes research sources and supporting materials used during investigations.
 
-- AI-powered claim analysis and misinformation detection.
-- Integration with trusted fact-checking databases and APIs.
-- Automated source credibility and reference verification.
-- Detection of misleading content, hallucinations, and potential bias.
-- Evidence-based verification reports.
-- Persistent data storage and enhanced dashboard analytics.
+### News Investigations
+Presents research-based investigations of selected news topics, examining individual claims and their supporting evidence.
 
+### Verification Methodology
+Documents the approach and criteria used to assess claims and interpret supporting information.
 
+## 5. Development Journey
+
+SCOOPIT evolved through two main development stages.
+
+**Stage 1 – Prototype Development (Week 5)**
+
+- Created a simple web interface for submitting claims.
+- Implemented predefined text-matching rules.
+- Introduced preliminary verification classifications.
+- Developed a basic dashboard to display verification statistics.
+
+**Stage 2 – Platform Expansion (Week 6)**
+
+- Expanded the platform with additional research-oriented sections.
+- Introduced a structured database of investigated claims.
+- Organized supporting sources and evidence.
+- Added news investigation components.
+- Developed a documented verification methodology.
+- Improved the overall organization and presentation of the platform.
+
+## 6. Technology Stack
+
+| Technology | Application |
+|---|---|
+| HTML5 | Webpage structure and content |
+| CSS3 | Styling, layout, and responsive presentation |
+| JavaScript | Interactive functionality and data presentation |
+| Visual Studio Code | Development environment |
+| Git & GitHub | Source code management and version history |
+| GitHub Pages | Website hosting and deployment |
+
+## 7. Research & Verification Methodology
+
+The project explores evidence-based claim assessment through a structured approach:
+
+1. Identifying individual factual claims within selected news reports.
+2. Locating relevant sources and supporting evidence.
+3. Comparing available information with the original claims.
+4. Evaluating the extent to which each claim is supported by available evidence.
+5. Assigning human-assessed verdicts based on the research findings.
+6. Distinguishing verified, partially true, misleading, false, and unverifiable claims.
+
+The methodology emphasizes source transparency, critical evaluation, and careful interpretation rather than relying solely on headlines or isolated statements.
+
+## 8. Screenshots
+
+Screenshots of the platform can be added here to demonstrate its interface and major features.
+
+Suggested screenshots:
+
+- Dashboard overview
+- Claim verification interface
+- Claim database and verdicts
+- Evidence repository
+- News investigations
+
+## 9. Technical Scope & Limitations
+
+SCOOPIT is an educational prototype and research-oriented demonstration, not a fully automated fact-checking service.
+
+- The interactive claim verification demonstration uses predefined examples and keyword-based logic.
+- The platform does not currently connect to a live AI fact-checking API.
+- AI-generated verdicts have not been recorded for the current investigation dataset; therefore, the AI vs. Human section should not be interpreted as a completed performance evaluation.
+- Verification findings are limited to the sources and research available for the selected investigations.
+- The platform does not currently use a centralized backend database.
+- Dashboard statistics and custom claim data may depend on browser-side storage.
+
+## 10. Future Development
+
+Potential improvements include:
+
+- Integration of reliable AI-powered claim analysis.
+- Automated retrieval of supporting evidence from credible sources.
+- More comprehensive source reliability assessment.
+- Expansion of investigation datasets across different subject areas.
+- Backend database integration and improved data management.
+- Further development of transparent and explainable verification methods.
+
+## 11. Project Links
+
+- **Live Platform:** https://nafisa-tasfia.github.io/SCOOPIT/
+- **Source Code:** https://github.com/nafisa-tasfia/SCOOPIT
+
+## 12. Project Purpose
+
+SCOOPIT explores how technology, research, and critical thinking can be combined to address the challenges of misinformation.
+
+Originating from an internship assignment and subsequently expanded through independent development, the project represents an exploration of responsible technology development, evidence-based analysis, and digital approaches to supporting informed decision-making.
+
+---
+
+**SCOOPIT – Uncover. Verify. Trust.**
