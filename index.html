@@ -1,50 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCOOPIT - Verify the Truth</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SCOOPIT - News investigation and fact-checking platform">
+  <title>SCOOPIT | Verify the Truth</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>SCOOPIT</h1>
-        <p>Uncover. Verify. Trust.</p>
-    </header>
+  <header class="topbar">
+    <a class="brand" href="#" onclick="showSection('dashboard')">
+      <span class="brand-mark">S</span>
+      <span>SCOOPIT<small>Uncover. Verify. Trust.</small></span>
+    </a>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#checker">Fact Checker</a>
-        <a href="#dashboard">Dashboard</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+    <nav id="mainNav">
+      <button class="nav-link active" data-section="dashboard">Dashboard</button>
+      <button class="nav-link" data-section="verify">Verify a Claim</button>
+      <button class="nav-link" data-section="claims">Claim Database</button>
+      <button class="nav-link" data-section="comparison">AI vs Human</button>
+      <button class="nav-link" data-section="evidence">Evidence Repository</button>
+      <button class="nav-link" data-section="articles">News Investigations</button>
+      <button class="nav-link" data-section="methodology">Methodology</button>
     </nav>
+  </header>
 
-    <main>
-        <h2>Question Everything. Verify the Facts.</h2>
-        <p>Check AI-generated information before trusting it.</p>
+  <main class="container">
 
-        <section id="checker">
-            <h3>AI Fact Checker</h3>
+    <!-- Dashboard -->
+    <section id="dashboard" class="page-section active">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">NEWS FACT-CHECKING PLATFORM</p>
+          <h1>Uncover the truth.<br><span>Verify the facts.</span></h1>
+          <p>Investigate news claims, examine evidence, and understand the facts behind the headlines.</p>
+          <button class="primary-btn" onclick="showSection('verify')">Verify a Claim →</button>
+        </div>
+        <div class="hero-art" aria-hidden="true">S<span>✓</span></div>
+      </div>
 
-            <textarea id="claim" placeholder="Paste your AI-generated claim here..."></textarea>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">INVESTIGATION OVERVIEW</p>
+          <h2>Verification Dashboard</h2>
+        </div>
+        <span class="live-label">● Human-reviewed results</span>
+      </div>
 
-            <button onclick="verifyClaim()">Verify Claim</button>
+      <div class="stats-grid">
+        <div class="stat-card"><span>Articles Investigated</span><strong id="totalArticles">5</strong></div>
+        <div class="stat-card"><span>Total Claims</span><strong id="totalClaims">50</strong></div>
+        <div class="stat-card verified"><span>Verified</span><strong id="verifiedCount">19</strong></div>
+        <div class="stat-card partial"><span>Partially True</span><strong id="partialCount">12</strong></div>
+        <div class="stat-card misleading"><span>Misleading</span><strong id="misleadingCount">1</strong></div>
+        <div class="stat-card false"><span>False</span><strong id="falseCount">0</strong></div>
+        <div class="stat-card unverifiable"><span>Unverifiable</span><strong id="unverifiableCount">18</strong></div>
+        <div class="stat-card"><span>AI-Human Disagreement</span><strong class="small-stat" id="disagreementRate">N/A</strong></div>
+      </div>
 
-            <div id="result"></div>
-        </section>
+      <div class="content-grid">
+        <div class="panel">
+          <div class="panel-heading"><h3>Claim Verdict Distribution</h3></div>
+          <div id="verdictChart" class="verdict-bars"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><h3>Investigation Summary</h3></div>
+          <div class="summary-list">
+            <p><span>Articles covered</span><strong>5 topics</strong></p>
+            <p><span>Claims per article</span><strong>10</strong></p>
+            <p><span>AI verdict records</span><strong>Not preserved</strong></p>
+            <p><span>Verification method</span><strong>Human-led</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="dashboard">
-            <h3>Verification Dashboard</h3>
-            <p>Total Checks: <span id="total">0</span></p>
-            <p>Supported: <span id="supported">0</span></p>
-            <p>Contradicted: <span id="false">0</span></p>
-        </section>
-    </main>
+    <!-- Verify a Claim -->
+    <section id="verify" class="page-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">PRELIMINARY CHECK</p><h2>Verify a Claim</h2></div>
+      </div>
+      <div class="panel verify-panel">
+        <label for="claimInput">Enter a news claim</label>
+        <textarea id="claimInput" rows="5" placeholder="Paste a factual statement you want to investigate..."></textarea>
+        <button class="primary-btn" id="verifyButton">Check Claim</button>
+        <div id="verifyResult" class="result-box hidden" aria-live="polite"></div>
+        <p class="notice">This is a basic prototype check, not an automated fact-checking engine. Results require independent source verification.</p>
+      </div>
+    </section>
+
+    <!-- Claim Database -->
+    <section id="claims" class="page-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">50 INVESTIGATED CLAIMS</p><h2>Claim Verification Database</h2></div>
+        <button class="secondary-btn" onclick="exportClaims()">Export CSV ↓</button>
+      </div>
+
+      <div class="filter-row">
+        <input type="search" id="claimSearch" placeholder="Search claim ID or statement...">
+        <select id="articleFilter">
+          <option value="all">All Articles</option>
+          <option value="A01">A01 – Politics</option>
+          <option value="A02">A02 – Business</option>
+          <option value="A03">A03 – Science & Technology</option>
+          <option value="A04">A04 – Health & Education</option>
+          <option value="A05">A05 – International Affairs</option>
+        </select>
+        <select id="verdictFilter">
+          <option value="all">All Verdicts</option>
+          <option>Verified</option>
+          <option>Partially True</option>
+          <option>Misleading</option>
+          <option>False</option>
+          <option>Unverifiable</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Claim ID</th><th>Article</th><th>Original Statement</th><th>Human Verdict</th><th>Details</th></tr></thead>
+          <tbody id="claimsTable"></tbody>
+        </table>
+      </div>
+      <p id="claimResultCount" class="muted"></p>
+    </section>
+
+    <!-- AI vs Human -->
+    <section id="comparison" class="page-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">COMPARATIVE ANALYSIS</p><h2>AI vs Human Findings</h2></div>
+      </div>
+      <div class="notice-card">
+        <strong>Comparison data limitation</strong>
+        <p>The original claim-by-claim AI verdicts were not preserved. AI verdicts are therefore marked as Not Recorded. Agreement and disagreement rates cannot currently be calculated.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Claim ID</th><th>AI Verdict</th><th>Human Verdict</th><th>Comparison</th></tr></thead>
+          <tbody id="comparisonTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Evidence Repository -->
+    <section id="evidence" class="page-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">RESEARCH DOCUMENTATION</p><h2>Evidence Repository</h2></div>
+        <button class="secondary-btn" onclick="exportEvidence()">Export CSV ↓</button>
+      </div>
+      <p class="muted">Sources used during the investigation. Source records are listed here; claim-specific links should be added only after confirming the exact relationship.</p>
+      <div class="filter-row">
+        <input type="search" id="sourceSearch" placeholder="Search source or publisher...">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Source ID</th><th>Source / Publisher</th><th>Type</th><th>Reliability</th><th>Link</th></tr></thead>
+          <tbody id="sourcesTable"></tbody>
+        </table>
+      </div>
+      <div class="panel gap-panel">
+        <h3>Identified Evidence Gaps</h3>
+        <p>Some claims could not be independently verified because original policy documents, technical records, research reports, or supporting datasets were unavailable.</p>
+        <button class="secondary-btn" onclick="showSection('claims'); document.getElementById('verdictFilter').value='Unverifiable'; renderClaims();">View Unverifiable Claims</button>
+      </div>
+    </section>
+
+    <!-- News Investigations -->
+    <section id="articles" class="page-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">FIVE SELECTED NEWS ARTICLES</p><h2>News Investigations</h2></div>
+      </div>
+      <div id="articlesGrid" class="article-grid"></div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="methodology" class="page-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">HOW SCOOPIT WORKS</p><h2>Verification Methodology</h2></div>
+      </div>
+      <div class="panel methodology">
+        <h3>Our Fact-Checking Process</h3>
+        <ol>
+          <li><strong>Claim Identification:</strong> Extract factual statements from selected news articles.</li>
+          <li><strong>Source Discovery:</strong> Identify relevant official, institutional, and independent sources.</li>
+          <li><strong>Evidence Collection:</strong> Collect supporting, contradicting, and contextual evidence.</li>
+          <li><strong>Source Assessment:</strong> Evaluate publisher authority, authenticity, relevance, transparency, and recency.</li>
+          <li><strong>Human Verification:</strong> Examine evidence and assign a final verdict.</li>
+          <li><strong>Documentation:</strong> Record findings, limitations, and evidence gaps.</li>
+        </ol>
+        <h3>Verdict Categories</h3>
+        <ul>
+          <li><strong>Verified:</strong> Supported by reliable evidence.</li>
+          <li><strong>Partially True:</strong> Some parts are supported, while others need qualification.</li>
+          <li><strong>Misleading:</strong> The statement creates an inaccurate impression due to framing or missing context.</li>
+          <li><strong>False:</strong> Reliable evidence contradicts the claim.</li>
+          <li><strong>Unverifiable:</strong> Sufficient evidence is unavailable to reach a conclusion.</li>
+        </ul>
+      </div>
+    </section>
 
     <footer>
-        <p>© 2026 SCOOPIT | AI-Assisted Fact Verification Platform</p>
+      <a class="brand footer-brand" href="#"><span class="brand-mark">S</span>SCOOPIT</a>
+      <p>Uncover. Verify. Trust.</p>
+      <small>Human-led fact-checking prototype | © 2026 SCOOPIT</small>
     </footer>
+  </main>
 
-    <script src="script.js"></script>
+  <div id="claimModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <h2 id="modalTitle">Claim Details</h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
